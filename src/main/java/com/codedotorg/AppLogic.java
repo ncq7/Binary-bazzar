@@ -59,18 +59,22 @@ public class AppLogic {
 
     /**
      * Removes the selected product from the cart.
-     * Gets the selected product from the store's products list view and updates
+     * Gets the selected product from the cart's items list view and updates
      * the inventory and products list view. Then removes the selected product
      * from the cart and updates the cart's items list view.
      */
     public void removeProductFromCart() {
-        Product selectedProduct = store.getProductsListView().getSelectionModel().getSelectedItem();
-
-
-
-
-
+        Product selectedProduct = cart.getItemsListView().getSelectionModel().getSelectedItem();
+    
+        if (selectedProduct != null) {
+            store.updateInventory(selectedProduct);
+            store.updateProductsListView();
+    
+            cart.removeFromCart(selectedProduct);
+            cart.updateItemsListView();
+        }
     }
+
 
     /**
      * Returns the new total of all products in the cart
@@ -78,9 +82,11 @@ public class AppLogic {
      * @return the new total of all products in the cart
      */
     public double getNewTotal() {
-
-        
-        return 0.0;
+        double total = 0.0;
+        for (Product product : cart.getItemsListView().getItems()) {
+            total += product.getPrice();
+        }
+        return total;
     }
 
 }

@@ -37,7 +37,7 @@ Write your prompt here!
 
 > &nbsp;
 > **Tip!**
->
+> Modify the removeProductFromCart() method to
 > Try starting your prompt with `"Modify the removeProductFromCart() method to"` followed by the steps that need to be added to this method.
 > &nbsp;
 
